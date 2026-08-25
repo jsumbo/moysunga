@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120" role="img" aria-labelledby="title desc">
+  <title id="title">Ministry of Foreign Affairs</title>
+  <desc id="desc">Placeholder for the official Ministry of Foreign Affairs logo.</desc>
+  <rect width="240" height="120" fill="#F3EFE7"/>
+  <text x="120" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#002868">MFA</text>
+  <text x="120" y="70" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#002868">Ministry of Foreign</text>
+  <text x="120" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#002868">Affairs</text>
+</svg>
