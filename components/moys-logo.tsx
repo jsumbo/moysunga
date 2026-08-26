@@ -10,10 +10,10 @@ type MoysLogoProps = {
 export function MoysLogo({ className, priority = false }: MoysLogoProps) {
   return (
     <Image
-      src="/partners/moys.svg"
+      src="/partners/Logo.png"
       alt=""
-      width={127}
-      height={62}
+      width={268}
+      height={263}
       className={cn("h-9 w-auto max-[760px]:h-7", className)}
       unoptimized
       {...(priority ? { priority: true } : {})}

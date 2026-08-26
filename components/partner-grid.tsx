@@ -51,9 +51,6 @@ export function PartnerGrid() {
           </div>
         ))}
       </div>
-      <p className="mt-[13px] font-meta text-[10px] font-medium tracking-[0.05em] text-[#75808e]">
-        {partners.note}
-      </p>
       <CtaLink href={partners.inquiryHref} variant="text-dark" className="mt-4">
         {partners.inquiryLabel}
       </CtaLink>

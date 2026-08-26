@@ -20,12 +20,10 @@ export function BrandLockup({
       aria-label="Ministry of Youth and Sports home"
       className={cn("inline-flex items-center no-underline", className)}
     >
-      <span className={cn(inverted && "bg-cream px-1.5 py-1")}>
-        <MoysLogo
-          {...(inverted ? { className: "h-8 max-[760px]:h-6" } : {})}
-          {...(priority ? { priority: true } : {})}
-        />
-      </span>
+      <MoysLogo
+        {...(inverted ? { className: "h-8 max-[760px]:h-6" } : {})}
+        {...(priority ? { priority: true } : {})}
+      />
     </Link>
   );
 }
