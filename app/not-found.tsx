@@ -10,10 +10,9 @@ export default function NotFound() {
         id="main"
         className="flex flex-1 flex-col items-start justify-center bg-cream px-[8.5vw] py-[123px] max-[760px]:px-[7vw] max-[760px]:py-[77px]"
       >
-        <div className="flex w-[34px] gap-[3px]">
-          <span className="h-[22px] flex-1 bg-liberia" />
-          <span className="h-[22px] flex-1 bg-highlight" />
-          <span className="h-[22px] flex-1 bg-ink" />
+        <div className="flex w-[34px] flex-col gap-[3px]">
+          <span className="h-[10px] w-full bg-ink" />
+          <span className="h-[10px] w-full bg-liberia" />
         </div>
         <p className="mt-6 font-meta text-[10px] font-medium tracking-[0.12em] uppercase">
           404 / Page not found

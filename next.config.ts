@@ -7,7 +7,6 @@ const contentSecurityPolicy = [
   "img-src 'self' data:",
   "font-src 'self'",
   "connect-src 'self'",
-  "frame-src https://www.youtube-nocookie.com",
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",

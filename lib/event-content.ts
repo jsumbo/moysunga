@@ -212,8 +212,6 @@ export const eventContent = {
     title: "A documentary is coming.",
     body: "We're producing a short film following Liberia's PATHWAYs journey, from Rooting to Rising. It will premiere here.",
     placeholderLabel: "Coming soon",
-    // Placeholder video for layout review — swap for the real documentary once produced.
-    youtubeId: "YE7VzlLtp-4",
   },
   footer: {
     credit: "Republic of Liberia\nUNGA 81 Side Event on Youth, Peace and Security",

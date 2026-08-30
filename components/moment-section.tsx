@@ -31,7 +31,7 @@ export function MomentSection() {
       </div>
       <aside className="bg-ink px-[31px] py-[33px] text-white max-[760px]:mt-0">
         <span
-          className="block font-display text-[60px] leading-[0.6] text-highlight"
+          className="block font-display text-[60px] leading-[0.6] text-white"
           aria-hidden="true"
         >
           “

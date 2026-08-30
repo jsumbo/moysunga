@@ -47,7 +47,7 @@ export function PathwaysSection() {
             {pathways.body}
           </p>
         </div>
-        <div className="font-display text-[clamp(38px,7vw,88px)] leading-none font-medium tracking-[-0.06em] text-highlight max-[760px]:mt-9">
+        <div className="font-display text-[clamp(38px,7vw,88px)] leading-none font-medium tracking-[-0.06em] text-white max-[760px]:mt-9">
           {pathways.yearsStart}
           <span className="font-sans font-normal">—</span>
           {pathways.yearsEnd}
@@ -64,11 +64,11 @@ export function PathwaysSection() {
             >
               <Icon
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-7 -bottom-10 size-[176px] text-highlight/18 max-[760px]:-right-5 max-[760px]:-bottom-8 max-[760px]:size-[140px]"
+                className="pointer-events-none absolute -right-7 -bottom-10 size-[176px] text-white/18 max-[760px]:-right-5 max-[760px]:-bottom-8 max-[760px]:size-[140px]"
                 strokeWidth={1}
               />
               <div className="relative">
-                <span className="font-meta text-[10px] font-medium text-highlight">
+                <span className="font-meta text-[10px] font-medium text-white">
                   {pillar.number}
                 </span>
                 <h3 className="mt-[33px] mb-4 font-display text-[27px] leading-[0.96] font-semibold tracking-[-0.04em] whitespace-pre-line">

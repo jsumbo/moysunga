@@ -46,10 +46,10 @@ export function SubmissionSuccessDialog({
         <DialogHeader className="gap-0">
           <CircleCheck
             aria-hidden="true"
-            className="size-8 text-highlight"
+            className="size-8 text-white"
             strokeWidth={1.5}
           />
-          <p className="mt-5 font-meta text-[10px] font-medium tracking-[0.12em] text-highlight uppercase">
+          <p className="mt-5 font-meta text-[10px] font-medium tracking-[0.12em] text-white/70 uppercase">
             Request received
           </p>
           <DialogTitle className="mt-[17px] mb-[21px] font-display text-[clamp(28px,3.4vw,38px)] leading-[0.98] font-semibold tracking-[-0.04em] text-white">

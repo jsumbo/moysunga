@@ -9,7 +9,7 @@ export function ConceptNoteCard() {
   return (
     <div className="mt-10 border border-line bg-white p-6">
       <div className="flex items-start gap-4">
-        <span className="flex size-11 shrink-0 items-center justify-center border border-ink/20 bg-ink text-highlight">
+        <span className="flex size-11 shrink-0 items-center justify-center border border-ink/20 bg-ink text-white">
           <FileText aria-hidden="true" className="size-5" strokeWidth={1.75} />
         </span>
         <div className="min-w-0">
