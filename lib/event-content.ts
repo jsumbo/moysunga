@@ -216,6 +216,8 @@ export const eventContent = {
   footer: {
     credit: "Republic of Liberia\nUNGA 81 Side Event on Youth, Peace and Security",
     backToTop: "Back to top",
+    email: "info@moys.gov.lr",
+    wordmark: "Rooting & Rising",
   },
   registerPage: {
     label: "Registration",
