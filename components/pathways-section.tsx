@@ -53,31 +53,33 @@ export function PathwaysSection() {
           {pathways.yearsEnd}
         </div>
       </div>
-      <div className="mt-[81px] border-t border-white/25 max-[760px]:mt-[52px]">
+      <div className="mt-[81px] grid grid-cols-2 border-t border-l border-white/25 max-[760px]:mt-[52px] max-[760px]:grid-cols-1">
         {pathways.pillars.map((pillar) => {
           const Icon = pillarIcons[pillar.number];
 
           return (
             <article
               key={pillar.number}
-              className="flex gap-8 border-b border-white/25 py-10 max-[760px]:flex-col max-[760px]:gap-4 max-[760px]:py-7"
+              className="relative overflow-hidden border-r border-b border-white/25 px-[26px] pt-[28px] pb-10"
             >
-              <div className="flex w-14 shrink-0 flex-col items-start gap-3 max-[760px]:w-auto max-[760px]:flex-row max-[760px]:items-center max-[760px]:gap-3">
-                <span className="font-meta text-xs font-medium text-white/70">
+              <Icon
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-7 -bottom-10 size-[176px] text-white/18"
+                strokeWidth={1}
+              />
+              <div className="relative">
+                <span className="font-meta text-[10px] font-medium text-white">
                   {pillar.number}
                 </span>
-                <Icon aria-hidden="true" className="size-7" strokeWidth={1.5} />
-              </div>
-              <div className="max-w-[760px]">
-                <h3 className="font-display text-[26px] leading-[1.1] font-semibold tracking-[-0.03em]">
+                <h3 className="mt-[18px] mb-1 font-display text-[24px] leading-[1.08] font-semibold tracking-[-0.03em]">
                   {pillar.title}
                 </h3>
                 {"subtitle" in pillar && pillar.subtitle ? (
-                  <p className="mt-1 font-display text-base italic text-white/70">
+                  <p className="font-display text-sm italic text-white/70">
                     {pillar.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-4 text-[15px] leading-[1.65] text-white/85">
+                <p className="mt-4 max-w-[440px] text-[14px] leading-[1.6] text-white/85">
                   {pillar.body}
                 </p>
               </div>
