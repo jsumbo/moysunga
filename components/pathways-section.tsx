@@ -1,11 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Dumbbell,
+  HandCoins,
   Landmark,
   Network,
   Palette,
   Telescope,
-  TrendingUp,
+  Trophy,
 } from "lucide-react";
 
 import { eventContent } from "@/lib/event-content";
@@ -19,16 +19,16 @@ const pillarIcons: Record<
   "01": Landmark,
   "02": Telescope,
   "03": Network,
-  "04": Dumbbell,
+  "04": Trophy,
   "05": Palette,
-  "06": TrendingUp,
+  "06": HandCoins,
 };
 
 export function PathwaysSection() {
   return (
     <section
       id={pathways.id}
-      className="overflow-hidden bg-liberia px-[8.5vw] pt-[34px] text-white max-[760px]:px-[7vw] max-[760px]:pt-[30px]"
+      className="overflow-hidden bg-liberia px-[8.5vw] pt-[34px] pb-[100px] text-white max-[760px]:px-[7vw] max-[760px]:pt-[30px] max-[760px]:pb-[70px]"
     >
       <div className="pb-[83px]">
         <div className="font-meta text-[10px] font-medium tracking-[0.12em] uppercase">
@@ -53,28 +53,31 @@ export function PathwaysSection() {
           {pathways.yearsEnd}
         </div>
       </div>
-      <div className="mt-[81px] grid grid-cols-3 max-[760px]:mt-[52px] max-[760px]:grid-cols-2">
+      <div className="mt-[81px] border-t border-white/25 max-[760px]:mt-[52px]">
         {pathways.pillars.map((pillar) => {
           const Icon = pillarIcons[pillar.number];
 
           return (
             <article
               key={pillar.number}
-              className="relative min-h-[215px] overflow-hidden border border-b-0 border-white/35 px-[22px] pt-[25px] pb-9 max-[760px]:min-h-[195px]"
+              className="flex gap-8 border-b border-white/25 py-10 max-[760px]:flex-col max-[760px]:gap-4 max-[760px]:py-7"
             >
-              <Icon
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-7 -bottom-10 size-[176px] text-white/18 max-[760px]:-right-5 max-[760px]:-bottom-8 max-[760px]:size-[140px]"
-                strokeWidth={1}
-              />
-              <div className="relative">
-                <span className="font-meta text-[10px] font-medium text-white">
+              <div className="flex w-14 shrink-0 flex-col items-start gap-3 max-[760px]:w-auto max-[760px]:flex-row max-[760px]:items-center max-[760px]:gap-3">
+                <span className="font-meta text-xs font-medium text-white/70">
                   {pillar.number}
                 </span>
-                <h3 className="mt-[33px] mb-4 font-display text-[27px] leading-[0.96] font-semibold tracking-[-0.04em] whitespace-pre-line">
+                <Icon aria-hidden="true" className="size-7" strokeWidth={1.5} />
+              </div>
+              <div className="max-w-[760px]">
+                <h3 className="font-display text-[26px] leading-[1.1] font-semibold tracking-[-0.03em]">
                   {pillar.title}
                 </h3>
-                <p className="m-0 text-[13px] leading-[1.4] text-white/80">
+                {"subtitle" in pillar && pillar.subtitle ? (
+                  <p className="mt-1 font-display text-base italic text-white/70">
+                    {pillar.subtitle}
+                  </p>
+                ) : null}
+                <p className="mt-4 text-[15px] leading-[1.65] text-white/85">
                   {pillar.body}
                 </p>
               </div>
