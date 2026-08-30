@@ -53,7 +53,7 @@ export function PathwaysSection() {
           {pathways.yearsEnd}
         </div>
       </div>
-      <div className="mt-[81px] grid grid-cols-2 border-t border-l border-white/25 max-[760px]:mt-[52px] max-[760px]:grid-cols-1">
+      <div className="mt-[81px] grid grid-cols-3 border-t border-l border-white/25 max-[760px]:mt-[52px] max-[760px]:grid-cols-1">
         {pathways.pillars.map((pillar) => {
           const Icon = pillarIcons[pillar.number];
 
@@ -79,7 +79,7 @@ export function PathwaysSection() {
                     {pillar.subtitle}
                   </p>
                 ) : null}
-                <p className="mt-4 max-w-[440px] text-[14px] leading-[1.6] text-white/85">
+                <p className="mt-4 text-[13px] leading-[1.55] text-white/85">
                   {pillar.body}
                 </p>
               </div>
