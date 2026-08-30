@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 
-import { ConfirmationPanel } from "@/components/confirmation-panel";
 import { FormField } from "@/components/form-field";
+import { SubmissionSuccessDialog } from "@/components/submission-success-dialog";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -15,13 +15,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { eventContent } from "@/lib/event-content";
 import { parseApiResponse } from "@/lib/http";
 import {
-  mockSubmissionResponseSchema,
+  submissionResponseSchema,
   partnershipInquirySchema,
   type PartnershipInquiryInput,
 } from "@/lib/schemas";
 
 export function PartnershipForm() {
-  const [reference, setReference] = useState<string | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
   const form = useForm<PartnershipInquiryInput>({
     resolver: zodResolver(partnershipInquirySchema),
     defaultValues: {
@@ -41,11 +41,9 @@ export function PartnershipForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      const data = await parseApiResponse(
-        response,
-        mockSubmissionResponseSchema,
-      );
-      setReference(data.reference);
+      await parseApiResponse(response, submissionResponseSchema);
+      setShowSuccess(true);
+      form.reset();
     } catch (error) {
       const message =
         error instanceof Error
@@ -55,20 +53,17 @@ export function PartnershipForm() {
     }
   });
 
-  if (reference) {
-    return (
-      <ConfirmationPanel
-        title={eventContent.partnersPage.successTitle}
-        body={eventContent.partnersPage.successBody}
-        reference={reference}
-      />
-    );
-  }
-
   const errors = form.formState.errors;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-6">
+    <>
+      <SubmissionSuccessDialog
+        open={showSuccess}
+        onOpenChange={setShowSuccess}
+        title={eventContent.partnersPage.successTitle}
+        body={eventContent.partnersPage.successBody}
+      />
+      <form onSubmit={onSubmit} noValidate className="grid gap-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <FormField id="name" label="Name" error={errors.name?.message}>
           <Input
@@ -154,8 +149,13 @@ export function PartnershipForm() {
         className="h-auto w-fit gap-7 rounded-none bg-liberia px-[18px] py-[15px] font-meta text-[11px] font-medium tracking-[0.08em] text-white uppercase hover:bg-liberia"
       >
         {form.formState.isSubmitting ? "Submitting" : "Submit inquiry"}
-        <ArrowUpRight aria-hidden="true" className="size-[19px]" />
+        {form.formState.isSubmitting ? (
+          <Loader2 aria-hidden="true" className="size-[19px] animate-spin" />
+        ) : (
+          <ArrowUpRight aria-hidden="true" className="size-[19px]" />
+        )}
       </Button>
-    </form>
+      </form>
+    </>
   );
 }

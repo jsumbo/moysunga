@@ -73,7 +73,12 @@ export function EventDetails() {
         </Detail>
         <Detail icon={MapPin} label={details.venueLabel} divider={false}>
           <span className="block">{details.venueValue}</span>
-          <span className="block font-semibold">{details.venueCity}</span>
+          <span className="mt-1 block text-[13px] leading-[1.4] font-medium tracking-normal text-copy normal-case">
+            {details.venueOrg}
+          </span>
+          <span className="block text-[13px] leading-[1.4] font-medium tracking-normal text-copy normal-case">
+            {details.venueStreet}, {details.venueCity}
+          </span>
         </Detail>
       </div>
     </section>

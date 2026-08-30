@@ -16,8 +16,8 @@ export function Agenda() {
         </h2>
         <div className="relative mt-6 min-h-[420px] flex-1 overflow-hidden bg-cream max-[760px]:min-h-[320px]">
           <Image
-            src="/photo-3.jpg"
-            alt="Young woman speaking into a microphone at a gathering"
+            src="/image.png"
+            alt="Panelist speaking into a microphone at a press briefing"
             fill
             className="object-cover object-center"
             sizes="(max-width: 760px) 86vw, 34vw"

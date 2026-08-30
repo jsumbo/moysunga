@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { handleMockSubmission } from "@/lib/mock-submission";
+import { insertRegistration } from "@/lib/db";
 import { registrationSchema } from "@/lib/schemas";
+import { handleSubmission } from "@/lib/submission";
 
 export async function POST(request: NextRequest) {
-  return handleMockSubmission({
+  return handleSubmission({
     request,
     schema: registrationSchema,
     prefix: "RR",
     message:
       "Registration received. Confirmation is required and will follow if a place is available.",
+    persist: (data, reference) => insertRegistration(data, reference),
   });
 }
 

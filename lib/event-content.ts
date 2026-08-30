@@ -25,7 +25,7 @@ export const eventContent = {
       label: "Attend the event",
     },
     secondaryAction: {
-      href: "/#pathways",
+      href: "/api/pathways-vision",
       label: "Explore PATHWAYs",
     },
   },
@@ -36,7 +36,9 @@ export const eventContent = {
     timeValue: "10:00 AM - 12:00 Noon",
     venueLabel: "Venue",
     venueValue: "Nelson Mandela Hall",
-    venueCity: "New York",
+    venueOrg: "African Union Permanent UN Mission",
+    venueStreet: "305 East 47th Street",
+    venueCity: "New York, NY 10017",
     programmeHref: "/#programme",
     programmeLabel: "View programme",
   },
@@ -60,35 +62,45 @@ export const eventContent = {
     titleBefore: "Building the",
     titleEmphasis: "conditions",
     titleAfter: "to thrive.",
-    body: "PATHWAYs turns aspiration into a practical, ten-year agenda for youth development in every county of Liberia.",
+    body: "PATHWAYs turns aspiration into a practical, ten-year agenda for youth and sports development in every county of Liberia.",
     yearsStart: "2026",
     yearsEnd: "2035",
     pillars: [
       {
         number: "01",
-        title: "Skills &\nemployment",
-        body: "Pathways to opportunity and dignified work.",
+        title: "Governance &\ninstitutions",
+        body: "A modern legal mandate and a Youth Outcome Compact binding government to shared accountability.",
       },
       {
         number: "02",
-        title: "Sport &\nwellbeing",
-        body: "Healthier communities and stronger belonging.",
+        title: "Evidence &\nforesight",
+        body: "Liberia's first National Youth Intelligence System and an Annual State of Youth Report.",
       },
       {
         number: "03",
-        title: "Civic\nparticipation",
-        body: "Young people shaping public life.",
+        title: "Pathway\nframework",
+        body: "A national network of multi-service structures and digital-inclusion hubs connecting young people to opportunity.",
       },
       {
         number: "04",
-        title: "Peace &\nresilience",
-        body: "Youth-led solutions for lasting peace.",
+        title: "Sport &\ndevelopment",
+        body: "A structured industry and multi-sport talent pipeline, grounded locally and connected globally.",
+      },
+      {
+        number: "05",
+        title: "Creative\neconomy",
+        body: "Formally claimed as a development sector, with creative economic activities across all fifteen counties.",
+      },
+      {
+        number: "06",
+        title: "Investment &\nresources",
+        body: "A diversified financing mechanism, codified in law and built sustainably into the future.",
       },
     ] as const,
   },
   programme: {
     id: "programme",
-    label: "03 / Programme",
+    label: "03 / Draft Programme",
     items: [
       {
         time: "10:00",
@@ -140,6 +152,8 @@ export const eventContent = {
     body: "Convened by the Ministry of Youth and Sports, Republic of Liberia, with national and international partners committed to youth-led progress.",
     inquiryHref: "/partners",
     inquiryLabel: "Partnership interest",
+    poweredByLabel: "Powered by",
+    partnersLabel: "Partners",
     logos: [
       {
         slug: "moys",
@@ -147,13 +161,7 @@ export const eventContent = {
         primary: "MOYS",
         src: "/partners/Logo.png",
         isPlaceholder: false,
-      },
-      {
-        slug: "liberia-un-mission",
-        name: "Permanent Mission of Liberia to the United Nations",
-        primary: "LIBERIA\nUN MISSION",
-        src: "/partners/01.png",
-        isPlaceholder: false,
+        group: "powered-by",
       },
       {
         slug: "mfa",
@@ -162,6 +170,15 @@ export const eventContent = {
         secondary: "Ministry of Foreign\nAffairs",
         src: "/partners/02.png",
         isPlaceholder: false,
+        group: "partner",
+      },
+      {
+        slug: "liberia-un-mission",
+        name: "Permanent Mission of Liberia to the United Nations",
+        primary: "LIBERIA\nUN MISSION",
+        src: "/partners/01.png",
+        isPlaceholder: false,
+        group: "partner",
       },
       {
         slug: "undp",
@@ -169,6 +186,7 @@ export const eventContent = {
         primary: "UNDP",
         src: "/partners/03.png",
         isPlaceholder: false,
+        group: "partner",
       },
       {
         slug: "unfpa",
@@ -176,6 +194,7 @@ export const eventContent = {
         primary: "UNFPA",
         src: "/partners/04.png",
         isPlaceholder: false,
+        group: "partner",
       },
       {
         slug: "liberia-seal",
@@ -183,8 +202,18 @@ export const eventContent = {
         primary: "REPUBLIC\nOF LIBERIA",
         src: "/partners/LiberiaSeal-01.png",
         isPlaceholder: false,
+        group: "partner",
       },
     ] as const,
+  },
+  documentary: {
+    id: "documentary",
+    label: "05 / The film",
+    title: "A documentary is coming.",
+    body: "We're producing a short film following Liberia's PATHWAYs journey, from Rooting to Rising. It will premiere here.",
+    placeholderLabel: "Coming soon",
+    // Placeholder video for layout review — swap for the real documentary once produced.
+    youtubeId: "YE7VzlLtp-4",
   },
   footer: {
     credit: "Republic of Liberia\nUNGA 81 Side Event on Youth, Peace and Security",
@@ -198,7 +227,14 @@ export const eventContent = {
       "Registration is open to the public and Liberian diaspora. Attendance is capacity-managed. Places are limited, and a confirmation is required before you attend.",
     successTitle: "Registration received.",
     successBody:
-      "Places are limited and subject to confirmation. This reference does not confirm attendance.",
+      "Places are limited and subject to confirmation. This registration does not confirm attendance.",
+    conceptNote: {
+      label: "Concept note",
+      title: "Read the full concept note",
+      body: "The official PATHWAYs: Rooting and Rising concept note, covering event rationale, agenda context, and partnership framing.",
+      actionLabel: "Download the concept note",
+      fileType: "PDF",
+    },
   },
   partnersPage: {
     label: "Partnership",
@@ -211,7 +247,7 @@ export const eventContent = {
     ] as const,
     successTitle: "Inquiry received.",
     successBody:
-      "This is a mock acknowledgement. It does not confirm a partnership.",
+      "The convening team will follow up. This does not confirm a partnership.",
   },
 } as const;
 

@@ -9,16 +9,18 @@ import {
 } from "@/lib/http";
 import { getClientKey, rateLimit } from "@/lib/rate-limit";
 
-export async function handleMockSubmission<T extends z.ZodType>({
+export async function handleSubmission<T extends z.ZodType>({
   request,
   schema,
   prefix,
   message,
+  persist,
 }: {
   request: NextRequest;
   schema: T;
   prefix: ConfirmationPrefix;
   message: string;
+  persist: (data: z.output<T>, reference: string) => Promise<void>;
 }): Promise<NextResponse> {
   if (!isSameOrigin(request)) {
     return jsonError("Forbidden", 403);
@@ -39,9 +41,17 @@ export async function handleMockSubmission<T extends z.ZodType>({
     return jsonError("Validation failed", 400, parsed.error.flatten());
   }
 
+  const reference = createConfirmationReference(prefix);
+
+  try {
+    await persist(parsed.data, reference);
+  } catch (error) {
+    console.error("Failed to persist submission", error);
+    return jsonError("Something went wrong. Please try again.", 500);
+  }
+
   return NextResponse.json({
     success: true,
-    reference: createConfirmationReference(prefix),
     message,
   });
 }

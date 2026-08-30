@@ -33,6 +33,13 @@ export const attendanceCategories = [
 
 const attendanceCategorySchema = z.enum(attendanceCategoryValues);
 
+export function attendanceCategoryLabel(value: string): string {
+  return (
+    attendanceCategories.find((category) => category.value === value)
+      ?.label ?? value
+  );
+}
+
 const requiredName = (label: string) =>
   z
     .string()
@@ -104,9 +111,8 @@ export const partnershipInquirySchema = z.object({
   }),
 });
 
-export const mockSubmissionResponseSchema = z.object({
+export const submissionResponseSchema = z.object({
   success: z.literal(true),
-  reference: z.string().min(1),
   message: z.string().min(1),
 });
 
@@ -121,7 +127,5 @@ export type PartnershipInquiryInput = z.input<typeof partnershipInquirySchema>;
 export type PartnershipInquiryPayload = z.output<
   typeof partnershipInquirySchema
 >;
-export type MockSubmissionResponse = z.output<
-  typeof mockSubmissionResponseSchema
->;
+export type SubmissionResponse = z.output<typeof submissionResponseSchema>;
 export type AttendanceCategory = z.output<typeof attendanceCategorySchema>;

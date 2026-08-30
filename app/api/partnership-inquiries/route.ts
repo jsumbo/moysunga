@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { handleMockSubmission } from "@/lib/mock-submission";
+import { insertPartnershipInquiry } from "@/lib/db";
 import { partnershipInquirySchema } from "@/lib/schemas";
+import { handleSubmission } from "@/lib/submission";
 
 export async function POST(request: NextRequest) {
-  return handleMockSubmission({
+  return handleSubmission({
     request,
     schema: partnershipInquirySchema,
     prefix: "PI",
     message: "Partnership inquiry received. The convening team will follow up.",
+    persist: (data, reference) => insertPartnershipInquiry(data, reference),
   });
 }
 

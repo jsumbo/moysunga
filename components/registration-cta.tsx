@@ -1,9 +1,9 @@
-import Image from "next/image";
-
 import { CtaLink } from "@/components/cta-link";
+import { VideoEmbed } from "@/components/video-embed";
 import { eventContent } from "@/lib/event-content";
 
 const registration = eventContent.registration;
+const documentary = eventContent.documentary;
 
 export function RegistrationCta() {
   return (
@@ -11,14 +11,8 @@ export function RegistrationCta() {
       id={registration.id}
       className="grid min-h-[555px] grid-cols-2 overflow-hidden bg-highlight max-[760px]:grid-cols-1"
     >
-      <div className="relative min-h-[430px] overflow-hidden bg-navy max-[760px]:min-h-[300px]">
-        <Image
-          src="/photo-1.jpg"
-          alt="Young woman looking at a smartphone"
-          fill
-          className="object-cover object-center"
-          sizes="(max-width: 760px) 100vw, 50vw"
-        />
+      <div className="flex flex-col justify-center bg-navy px-8 py-10 max-[760px]:px-[7vw] max-[760px]:py-8">
+        <VideoEmbed youtubeId={documentary.youtubeId} title={documentary.title} />
       </div>
       <div className="px-[10%] py-[85px] max-[760px]:px-[7vw] max-[760px]:py-[65px]">
         <p className="font-meta text-[11px] font-medium tracking-[0.1em] uppercase">

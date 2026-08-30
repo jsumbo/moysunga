@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { apiErrorResponseSchema, mockSubmissionResponseSchema } from "@/lib/schemas";
+import { apiErrorResponseSchema, submissionResponseSchema } from "@/lib/schemas";
 
 export function jsonError(
   message: string,
@@ -50,4 +50,4 @@ export async function parseApiResponse<T extends z.ZodType>(
   return schema.parse(data);
 }
 
-export { mockSubmissionResponseSchema };
+export { submissionResponseSchema };

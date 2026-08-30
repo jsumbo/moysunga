@@ -8,8 +8,20 @@ import { eventContent } from "@/lib/event-content";
 const page = eventContent.partnersPage;
 
 export const metadata: Metadata = {
-  title: "Partners | Rooting & Rising",
+  title: "Partners",
   description: page.caseStudy[0],
+  alternates: {
+    canonical: "/partners",
+  },
+  openGraph: {
+    url: "/partners",
+    title: "Partners | Rooting & Rising",
+    description: page.caseStudy[0],
+  },
+  twitter: {
+    title: "Partners | Rooting & Rising",
+    description: page.caseStudy[0],
+  },
 };
 
 export default function PartnersPage() {

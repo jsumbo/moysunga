@@ -1,5 +1,12 @@
 import type { LucideIcon } from "lucide-react";
-import { Briefcase, Dumbbell, HeartHandshake, Landmark } from "lucide-react";
+import {
+  Dumbbell,
+  Landmark,
+  Network,
+  Palette,
+  Telescope,
+  TrendingUp,
+} from "lucide-react";
 
 import { eventContent } from "@/lib/event-content";
 
@@ -9,10 +16,12 @@ const pillarIcons: Record<
   (typeof pathways.pillars)[number]["number"],
   LucideIcon
 > = {
-  "01": Briefcase,
-  "02": Dumbbell,
-  "03": Landmark,
-  "04": HeartHandshake,
+  "01": Landmark,
+  "02": Telescope,
+  "03": Network,
+  "04": Dumbbell,
+  "05": Palette,
+  "06": TrendingUp,
 };
 
 export function PathwaysSection() {
@@ -44,7 +53,7 @@ export function PathwaysSection() {
           {pathways.yearsEnd}
         </div>
       </div>
-      <div className="mt-[81px] grid grid-cols-4 max-[760px]:mt-[52px] max-[760px]:grid-cols-2">
+      <div className="mt-[81px] grid grid-cols-3 max-[760px]:mt-[52px] max-[760px]:grid-cols-2">
         {pathways.pillars.map((pillar) => {
           const Icon = pillarIcons[pillar.number];
 

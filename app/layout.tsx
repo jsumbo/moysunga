@@ -30,9 +30,43 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const siteUrl = "https://moyslibvision.com";
+
 export const metadata: Metadata = {
-  title: eventContent.meta.title,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: eventContent.meta.title,
+    template: `%s | Rooting & Rising`,
+  },
   description: eventContent.meta.description,
+  keywords: [
+    "UNGA 81",
+    "Liberia",
+    "Ministry of Youth and Sports",
+    "PATHWAYs",
+    "Youth, Peace and Security",
+    "Rooting and Rising",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Rooting & Rising | Liberia at UNGA 81",
+    title: eventContent.meta.title,
+    description: eventContent.meta.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: eventContent.meta.title,
+    description: eventContent.meta.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

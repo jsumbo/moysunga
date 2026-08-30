@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { ConceptNoteCard } from "@/components/concept-note-card";
 import { RegistrationForm } from "@/components/registration-form";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,8 +9,20 @@ import { eventContent } from "@/lib/event-content";
 const page = eventContent.registerPage;
 
 export const metadata: Metadata = {
-  title: "Register | Rooting & Rising",
+  title: "Register",
   description: page.intro,
+  alternates: {
+    canonical: "/register",
+  },
+  openGraph: {
+    url: "/register",
+    title: "Register | Rooting & Rising",
+    description: page.intro,
+  },
+  twitter: {
+    title: "Register | Rooting & Rising",
+    description: page.intro,
+  },
 };
 
 export default function RegisterPage() {
@@ -30,6 +43,7 @@ export default function RegisterPage() {
             <p className="max-w-[420px] text-base leading-[1.6] text-copy">
               {page.intro}
             </p>
+            <ConceptNoteCard />
           </div>
           <div className="border-t border-line pt-8">
             <RegistrationForm />

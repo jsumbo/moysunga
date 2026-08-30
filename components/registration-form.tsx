@@ -3,10 +3,10 @@
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 
-import { ConfirmationPanel } from "@/components/confirmation-panel";
 import { FormField } from "@/components/form-field";
+import { SubmissionSuccessDialog } from "@/components/submission-success-dialog";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -22,14 +22,14 @@ import { eventContent } from "@/lib/event-content";
 import { parseApiResponse } from "@/lib/http";
 import {
   attendanceCategories,
-  mockSubmissionResponseSchema,
+  submissionResponseSchema,
   registrationSchema,
   type RegistrationInput,
 } from "@/lib/schemas";
 import { useState } from "react";
 
 export function RegistrationForm() {
-  const [reference, setReference] = useState<string | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
   const form = useForm<RegistrationInput>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
@@ -53,8 +53,9 @@ export function RegistrationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      const data = await parseApiResponse(response, mockSubmissionResponseSchema);
-      setReference(data.reference);
+      await parseApiResponse(response, submissionResponseSchema);
+      setShowSuccess(true);
+      form.reset();
     } catch (error) {
       const message =
         error instanceof Error
@@ -64,20 +65,17 @@ export function RegistrationForm() {
     }
   });
 
-  if (reference) {
-    return (
-      <ConfirmationPanel
-        title={eventContent.registerPage.successTitle}
-        body={eventContent.registerPage.successBody}
-        reference={reference}
-      />
-    );
-  }
-
   const errors = form.formState.errors;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-6">
+    <>
+      <SubmissionSuccessDialog
+        open={showSuccess}
+        onOpenChange={setShowSuccess}
+        title={eventContent.registerPage.successTitle}
+        body={eventContent.registerPage.successBody}
+      />
+      <form onSubmit={onSubmit} noValidate className="grid gap-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <FormField
           id="firstName"
@@ -239,8 +237,13 @@ export function RegistrationForm() {
         className="h-auto w-fit gap-7 rounded-none bg-liberia px-[18px] py-[15px] font-meta text-[11px] font-medium tracking-[0.08em] text-white uppercase hover:bg-liberia"
       >
         {form.formState.isSubmitting ? "Submitting" : "Submit registration"}
-        <ArrowUpRight aria-hidden="true" className="size-[19px]" />
+        {form.formState.isSubmitting ? (
+          <Loader2 aria-hidden="true" className="size-[19px] animate-spin" />
+        ) : (
+          <ArrowUpRight aria-hidden="true" className="size-[19px]" />
+        )}
       </Button>
-    </form>
+      </form>
+    </>
   );
 }
