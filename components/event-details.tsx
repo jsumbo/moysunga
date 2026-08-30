@@ -1,15 +1,8 @@
 import type { ReactNode } from "react";
-import { Syne } from "next/font/google";
 import { CalendarDays, Clock, MapPin } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { eventContent } from "@/lib/event-content";
-
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  display: "swap",
-});
 
 const details = eventContent.details;
 
@@ -30,14 +23,14 @@ function Detail({
         divider ? "border-r border-ink/20 pr-8" : ""
       }`}
     >
-      <span className="mt-1 flex size-11 shrink-0 items-center justify-center border border-ink/25 bg-ink text-highlight">
+      <span className="mt-1 flex size-11 shrink-0 items-center justify-center border border-ink/25 bg-ink text-white">
         <Icon aria-hidden="true" className="size-5" strokeWidth={1.75} />
       </span>
       <div className="min-w-0">
-        <p className="text-[12px] font-semibold tracking-[0.2em] uppercase">
+        <p className="font-meta text-[10px] font-medium tracking-[0.12em] uppercase">
           {label}
         </p>
-        <div className="mt-2 text-[clamp(22px,2.4vw,32px)] leading-[1.08] font-extrabold tracking-[-0.03em]">
+        <div className="mt-2 font-display text-[clamp(22px,2.4vw,32px)] leading-[1.08] font-semibold tracking-[-0.03em]">
           {children}
         </div>
       </div>
@@ -51,7 +44,7 @@ export function EventDetails() {
 
   return (
     <section
-      className={`${syne.className} bg-highlight px-[8.5vw] py-10 text-ink max-[760px]:px-[7vw] max-[760px]:py-8`}
+      className="bg-white px-[8.5vw] py-10 text-ink max-[760px]:px-[7vw] max-[760px]:py-8"
       aria-label="Event details"
     >
       <div className="grid grid-cols-[0.85fr_0.85fr_1.3fr] items-center gap-8 max-[760px]:grid-cols-1 max-[760px]:gap-0">
