@@ -86,7 +86,7 @@ export const eventContent = {
       {
         number: "04",
         title: "Sport as a National Development System",
-        body: "Liberia's grassroots sports culture is one of the most powerful and most under-leveraged assets in the Ministry's portfolio. The 2026 county tour documented active sports participation in all fifteen counties. Communities are building leagues, maintaining pitches, and producing athletes with no institutional backing whatsoever. Architecture is the problem, not talent. Pillar Four builds the system that converts grassroots energy into a talent pipeline, an economic sector, and",
+        body: "Liberia's grassroots sports culture is one of the most powerful and most under-leveraged assets in the Ministry's portfolio. The 2026 county tour documented active sports participation in all fifteen counties. Communities are building leagues, maintaining pitches, and producing athletes with no institutional backing whatsoever. Architecture is the problem, not talent. Pillar Four builds the system that converts grassroots energy into a talent pipeline, an economic sector, and a sustained vehicle for national identity and international standing.",
       },
       {
         number: "05",
