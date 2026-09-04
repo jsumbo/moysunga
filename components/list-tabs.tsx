@@ -9,13 +9,39 @@ const tabs = [
   { href: "/list/partners", label: "Partners" },
 ];
 
-export function ListTabs() {
+export function ListSidebarNav() {
+  const pathname = usePathname();
+
+  return (
+    <nav aria-label="Signups sections" className="flex flex-col gap-1">
+      {tabs.map((tab) => {
+        const isActive = pathname === tab.href;
+        return (
+          <Link
+            key={tab.href}
+            href={tab.href}
+            aria-current={isActive ? "page" : undefined}
+            className={`border-l-2 px-4 py-2 font-meta text-[11px] font-medium tracking-[0.08em] uppercase no-underline transition-colors ${
+              isActive
+                ? "border-liberia bg-cream text-ink"
+                : "border-transparent text-muted-copy hover:bg-cream hover:text-ink"
+            }`}
+          >
+            {tab.label}
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
+
+export function ListMobileNav() {
   const pathname = usePathname();
 
   return (
     <nav
       aria-label="Signups sections"
-      className="mt-8 flex gap-6 border-b border-line"
+      className="flex gap-6 border-b border-line"
     >
       {tabs.map((tab) => {
         const isActive = pathname === tab.href;
