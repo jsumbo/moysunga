@@ -26,6 +26,57 @@ function formatDate(value: string): string {
   return dateFormatter.format(new Date(value));
 }
 
+function hoursAgo(hours: number): number {
+  return Date.now() - hours * 60 * 60 * 1000;
+}
+
+function StatCard({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="border border-line bg-white px-5 py-4">
+      <p className="font-meta text-[10px] font-medium tracking-[0.1em] text-muted-copy uppercase">
+        {label}
+      </p>
+      <p className="mt-2 font-display text-[32px] leading-none font-semibold tracking-[-0.03em] text-ink">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+function countRegisteredSince(registrations: RegistrationRow[], since: number): number {
+  return registrations.filter(
+    (row) => new Date(row.created_at).getTime() >= since,
+  ).length;
+}
+
+function SummaryCards({
+  registrations,
+  partnershipInquiries,
+  oneDayAgo,
+}: {
+  registrations: RegistrationRow[];
+  partnershipInquiries: PartnershipInquiryRow[];
+  oneDayAgo: number;
+}) {
+  const registeredToday = countRegisteredSince(registrations, oneDayAgo);
+  const countriesRepresented = new Set(
+    registrations.map((row) => row.country.trim().toLowerCase()),
+  ).size;
+  const accessibilityRequests = registrations.filter(
+    (row) => row.accessibility_needs && row.accessibility_needs.trim().length > 0,
+  ).length;
+
+  return (
+    <div className="grid grid-cols-5 gap-4 max-[900px]:grid-cols-3 max-[540px]:grid-cols-2">
+      <StatCard label="Registrations" value={registrations.length} />
+      <StatCard label="Last 24 hours" value={registeredToday} />
+      <StatCard label="Partnership inquiries" value={partnershipInquiries.length} />
+      <StatCard label="Countries represented" value={countriesRepresented} />
+      <StatCard label="Accessibility requests" value={accessibilityRequests} />
+    </div>
+  );
+}
+
 function RegistrationsTable({ rows }: { rows: RegistrationRow[] }) {
   if (rows.length === 0) {
     return <p className="text-sm text-copy">No registrations yet.</p>;
@@ -146,6 +197,12 @@ export default async function ListPage() {
         <p className="mt-6 text-sm text-liberia">{loadError}</p>
       ) : (
         <div className="mt-10 flex flex-col gap-14">
+          <SummaryCards
+            registrations={registrations}
+            partnershipInquiries={partnershipInquiries}
+            oneDayAgo={hoursAgo(24)}
+          />
+
           <section>
             <h2 className="mb-4 font-meta text-[11px] font-medium tracking-[0.1em] uppercase">
               Registrations ({registrations.length})
