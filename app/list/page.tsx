@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 
 import { ListSignOutButton } from "@/components/list-sign-out-button";
 import {
+  PartnershipInquiriesTable,
+  RegistrationsTable,
+} from "@/components/list-tables";
+import {
   listPartnershipInquiries,
   listRegistrations,
   type PartnershipInquiryRow,
   type RegistrationRow,
 } from "@/lib/db";
-import { attendanceCategoryLabel } from "@/lib/schemas";
 
 export const dynamic = "force-dynamic";
 
@@ -15,16 +18,6 @@ export const metadata: Metadata = {
   title: "Signups",
   robots: { index: false, follow: false },
 };
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  dateStyle: "medium",
-  timeStyle: "short",
-  timeZone: "America/New_York",
-});
-
-function formatDate(value: string): string {
-  return dateFormatter.format(new Date(value));
-}
 
 function hoursAgo(hours: number): number {
   return Date.now() - hours * 60 * 60 * 1000;
@@ -73,98 +66,6 @@ function SummaryCards({
       <StatCard label="Partnership inquiries" value={partnershipInquiries.length} />
       <StatCard label="Countries represented" value={countriesRepresented} />
       <StatCard label="Accessibility requests" value={accessibilityRequests} />
-    </div>
-  );
-}
-
-function RegistrationsTable({ rows }: { rows: RegistrationRow[] }) {
-  if (rows.length === 0) {
-    return <p className="text-sm text-copy">No registrations yet.</p>;
-  }
-
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[900px] border-collapse text-left text-sm">
-        <thead>
-          <tr className="border-b border-line text-xs tracking-[0.06em] text-muted-copy uppercase">
-            <th className="py-2 pr-4">Submitted</th>
-            <th className="py-2 pr-4">Name</th>
-            <th className="py-2 pr-4">Email</th>
-            <th className="py-2 pr-4">Phone</th>
-            <th className="py-2 pr-4">Organization</th>
-            <th className="py-2 pr-4">Role</th>
-            <th className="py-2 pr-4">Country</th>
-            <th className="py-2 pr-4">Category</th>
-            <th className="py-2 pr-4">Accessibility notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.id} className="border-b border-line/60 align-top">
-              <td className="py-2 pr-4 whitespace-nowrap">
-                {formatDate(row.created_at)}
-              </td>
-              <td className="py-2 pr-4 whitespace-nowrap">
-                {row.first_name} {row.last_name}
-              </td>
-              <td className="py-2 pr-4">{row.email}</td>
-              <td className="py-2 pr-4 whitespace-nowrap">
-                {row.phone || "—"}
-              </td>
-              <td className="py-2 pr-4">{row.organization}</td>
-              <td className="py-2 pr-4">{row.role}</td>
-              <td className="py-2 pr-4 whitespace-nowrap">{row.country}</td>
-              <td className="py-2 pr-4 whitespace-nowrap">
-                {attendanceCategoryLabel(row.attendance_category)}
-              </td>
-              <td className="py-2 pr-4">{row.accessibility_needs || "—"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function PartnershipInquiriesTable({
-  rows,
-}: {
-  rows: PartnershipInquiryRow[];
-}) {
-  if (rows.length === 0) {
-    return <p className="text-sm text-copy">No partnership inquiries yet.</p>;
-  }
-
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[900px] border-collapse text-left text-sm">
-        <thead>
-          <tr className="border-b border-line text-xs tracking-[0.06em] text-muted-copy uppercase">
-            <th className="py-2 pr-4">Submitted</th>
-            <th className="py-2 pr-4">Name</th>
-            <th className="py-2 pr-4">Email</th>
-            <th className="py-2 pr-4">Organization</th>
-            <th className="py-2 pr-4">Role</th>
-            <th className="py-2 pr-4">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.id} className="border-b border-line/60 align-top">
-              <td className="py-2 pr-4 whitespace-nowrap">
-                {formatDate(row.created_at)}
-              </td>
-              <td className="py-2 pr-4 whitespace-nowrap">{row.name}</td>
-              <td className="py-2 pr-4">{row.email}</td>
-              <td className="py-2 pr-4">{row.organization}</td>
-              <td className="py-2 pr-4">{row.role}</td>
-              <td className="py-2 pr-4 max-w-[360px] whitespace-pre-line">
-                {row.message}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }

@@ -60,9 +60,9 @@ export const registrationSchema = z.object({
   phone: z
     .string()
     .trim()
+    .min(1, "Phone number is required")
     .max(40, "Phone number must be 40 characters or fewer")
-    .regex(/^$|^[+0-9() .\-]+$/, "Enter a valid phone number")
-    .optional(),
+    .regex(/^[+0-9() .\-]+$/, "Enter a valid phone number"),
   organization: z
     .string()
     .trim()

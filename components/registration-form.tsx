@@ -115,7 +115,6 @@ export function RegistrationForm() {
         <FormField
           id="phone"
           label="Phone"
-          optional
           error={errors.phone?.message}
         >
           <Input
