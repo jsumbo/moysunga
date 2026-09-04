@@ -45,7 +45,7 @@ export default function ListDashboardLayout({
         </div>
       </div>
 
-      <main className="flex-1 px-[3vw] py-[60px] max-[900px]:px-[7vw] max-[900px]:py-8">
+      <main className="min-w-0 flex-1 px-[3vw] py-[60px] max-[900px]:px-[7vw] max-[900px]:py-8">
         {children}
       </main>
     </div>
