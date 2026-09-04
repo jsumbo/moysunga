@@ -20,8 +20,8 @@ export default function ListDashboardLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="flex min-h-full bg-cream text-ink max-[900px]:flex-col">
-      <aside className="flex w-[220px] shrink-0 flex-col border-r border-line bg-white px-5 py-8 max-[900px]:hidden">
+    <div className="flex min-h-full min-w-0 overflow-x-hidden bg-cream text-ink max-[900px]:flex-col">
+      <aside className="flex w-[190px] shrink-0 flex-col border-r border-line bg-white px-5 py-8 max-[900px]:hidden">
         <h1 className="px-4 font-display text-xl font-semibold tracking-[-0.02em]">
           Signups
         </h1>

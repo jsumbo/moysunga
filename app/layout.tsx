@@ -79,7 +79,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col bg-cream font-sans text-ink antialiased">
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-cream font-sans text-ink antialiased">
         <SkipLink />
         {children}
         <Toaster />
