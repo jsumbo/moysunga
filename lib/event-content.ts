@@ -25,7 +25,7 @@ export const eventContent = {
       label: "Attend the event",
     },
     secondaryAction: {
-      href: "/api/pathways-vision",
+      href: "/#pathways",
       label: "Explore PATHWAYs",
     },
   },
