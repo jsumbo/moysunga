@@ -7,6 +7,7 @@ const tabs = [
   { href: "/list", label: "Overview" },
   { href: "/list/signups", label: "Signups" },
   { href: "/list/partners", label: "Partners" },
+  { href: "/list/gallery", label: "Gallery" },
 ];
 
 export function ListSidebarNav() {

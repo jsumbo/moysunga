@@ -15,7 +15,9 @@ const pool = new Pool({ connectionString: databaseUrl });
 
 try {
   await pool.query(schemaSql);
-  console.log("Migration applied: registrations, partnership_inquiries");
+  console.log(
+    "Migration applied: registrations, partnership_inquiries, gallery_images",
+  );
 } finally {
   await pool.end();
 }
