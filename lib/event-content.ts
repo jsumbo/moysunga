@@ -9,6 +9,7 @@ export const eventContent = {
     { href: "/#pathways", label: "PATHWAYs" },
     { href: "/#programme", label: "Programme" },
     { href: "/#partners", label: "Partners" },
+    { href: "/gallery", label: "Gallery" },
   ] as const,
   registerCta: {
     href: "/register",
@@ -25,7 +26,7 @@ export const eventContent = {
       label: "Attend the event",
     },
     secondaryAction: {
-      href: "/#pathways",
+      href: "/api/pathways-vision",
       label: "Explore PATHWAYs",
     },
   },
@@ -238,6 +239,15 @@ export const eventContent = {
       actionLabel: "Download the concept note",
       fileType: "PDF",
     },
+  },
+  galleryPage: {
+    id: "gallery",
+    label: "Gallery",
+    titleBefore: "Moments from",
+    titleEmphasis: "Rooting and Rising.",
+    intro:
+      "Photos from the PATHWAYs county tour and the road to UNGA 81.",
+    emptyState: "Photos will appear here as they're added.",
   },
   partnersPage: {
     label: "Partnership",

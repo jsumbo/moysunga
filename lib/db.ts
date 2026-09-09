@@ -84,3 +84,47 @@ export async function listPartnershipInquiries(): Promise<
     select * from partnership_inquiries order by created_at desc
   `) as PartnershipInquiryRow[];
 }
+
+export type GalleryImageRow = {
+  id: string;
+  s3_key: string;
+  content_type: string;
+  caption: string | null;
+  created_at: string;
+};
+
+export async function insertGalleryImage(data: {
+  s3Key: string;
+  contentType: string;
+  caption: string | null;
+}): Promise<GalleryImageRow> {
+  const sql = getSql();
+  const rows = (await sql`
+    insert into gallery_images (s3_key, content_type, caption)
+    values (${data.s3Key}, ${data.contentType}, ${data.caption})
+    returning *
+  `) as GalleryImageRow[];
+  return rows[0]!;
+}
+
+export async function listGalleryImages(): Promise<GalleryImageRow[]> {
+  const sql = getSql();
+  return (await sql`
+    select * from gallery_images order by created_at desc
+  `) as GalleryImageRow[];
+}
+
+export async function getGalleryImage(
+  id: string,
+): Promise<GalleryImageRow | null> {
+  const sql = getSql();
+  const rows = (await sql`
+    select * from gallery_images where id = ${id}
+  `) as GalleryImageRow[];
+  return rows[0] ?? null;
+}
+
+export async function deleteGalleryImage(id: string): Promise<void> {
+  const sql = getSql();
+  await sql`delete from gallery_images where id = ${id}`;
+}

@@ -25,3 +25,11 @@ create table if not exists partnership_inquiries (
   message text not null,
   created_at timestamptz not null default now()
 );
+
+create table if not exists gallery_images (
+  id uuid primary key default gen_random_uuid(),
+  s3_key text not null unique,
+  content_type text not null,
+  caption text,
+  created_at timestamptz not null default now()
+);
